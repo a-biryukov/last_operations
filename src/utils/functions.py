@@ -11,3 +11,21 @@ def load_file(filename) -> list:
         data = json.load(file)
 
     return data
+
+
+def get_executed_operations(data: list) -> list:
+    """
+    Загружает файл с данными, выбирает выполненные операции и добавляет их в список,
+    если в списке оказывается пустой словарь - пропускает его
+    :param data: Список с данными по операциям
+    :return: Список с выполненными операциями
+    """
+    executed_operations = []
+
+    for operation in data:
+        if not operation:
+            continue
+        elif operation["state"] == "EXECUTED":
+            executed_operations.append(operation)
+
+    return executed_operations
