@@ -160,6 +160,21 @@ sorted_list = [
   }
 ]
 
+enter_1 = """08.12.2019 Открытие вклада
+Счет **5907
+41096.24 USD
+"""
+
+enter_2 = """14.10.2018 Перевод со счета на счет
+Счет **8655 -> Счет **3493
+77751.04 руб.
+"""
+
+enter_3 = """26.01.2018 Перевод с карты на карту
+Maestro 4598 30** **** 4501 -> Visa Platinum 1246 37** **** 3588
+50870.71 руб.
+"""
+
 
 @pytest.fixture
 def filename_fixture():
@@ -179,3 +194,18 @@ def executed_fixture():
 @pytest.fixture
 def sorted_fixture():
     return sorted_list.copy()
+
+
+@pytest.fixture
+def enter_fixture_1():
+    return enter_1
+
+
+@pytest.fixture
+def enter_fixture_2():
+    return enter_2
+
+
+@pytest.fixture
+def enter_fixture_3():
+    return enter_3
