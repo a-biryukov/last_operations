@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 
 
@@ -29,3 +30,16 @@ def get_executed_operations(data: list) -> list:
             executed_operations.append(operation)
 
     return executed_operations
+
+
+def sort_operations(executed_operations: list) -> list:
+    """
+    Сортирует операции по дате и возвращает последние пять
+    :param executed_operations: Список с выполненными операциями
+    :return: Список с последними пятью операциями
+    """
+    sorted_operations = sorted(
+        executed_operations,
+        key=lambda x: datetime.strptime(x['date'], '%Y-%m-%dT%H:%M:%S.%f'), reverse=True
+    )
+    return sorted_operations[0:6]
