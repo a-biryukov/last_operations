@@ -40,7 +40,7 @@ def sort_operations(executed_operations: list) -> list:
     """
     sorted_operations = sorted(
         executed_operations,
-        key=lambda x: datetime.strptime(x['date'], '%Y-%m-%dT%H:%M:%S.%f'), reverse=True
+        key=lambda x: datetime.strptime(x["date"], '%Y-%m-%dT%H:%M:%S.%f'), reverse=True
     )
     return sorted_operations[0:6]
 
