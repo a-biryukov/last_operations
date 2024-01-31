@@ -10,9 +10,10 @@ def main():
     # Получение из файла списка с данными об операцих
     data_list = load_file(filename)
 
+    # Получение последних пяти совершённых операций
     last_operations = get_last_operations(data_list)
 
-    # Вывод последних пяти операций
+    # Вывод последних пяти совершённых операций
     for num in range(5):
         print(enter_operations(last_operations[num]))
 
