@@ -27,7 +27,7 @@ def get_last_operations(data: list) -> list:
 
     last_operations = []
 
-    while len(last_operations) < 5:
+    while len(last_operations) < 5 and len(data) > 0:
         last_operation = max(
             data,
             key=lambda x: datetime.strptime(x["date"], '%Y-%m-%dT%H:%M:%S.%f'))
