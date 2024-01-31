@@ -14,7 +14,7 @@ def main():
     last_operations = get_last_operations(data_list)
 
     # Вывод последних пяти совершённых операций
-    for num in range(5):
+    for num in range(len(last_operations)):
         print(enter_operations(last_operations[num]))
 
 
