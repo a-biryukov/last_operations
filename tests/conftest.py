@@ -46,8 +46,8 @@ data_list = [
       }
     },
     "description": "Перевод с карты на карту",
-    "from": "Maestro 4598300720424501",
-    "to": "Visa Platinum 1246377376343588"
+    "from": "Visa Classic 4062745111784804",
+    "to": "Maestro 8602249654751155"
   },
   {},
   {
@@ -69,31 +69,31 @@ data_list = [
     "state": "EXECUTED",
     "date": "2018-07-06T22:32:10.495465",
     "operationAmount": {
-      "amount": "37160.27",
-      "currency": {
-        "name": "руб.",
-        "code": "RUB"
-      }
+        "amount": "37160.27",
+        "currency": {
+            "name": "руб.",
+            "code": "RUB"
+        }
     },
-    "description": "Перевод с карты на карту",
-    "from": "Visa Classic 4062745111784804",
-    "to": "Maestro 8602249654751155"
+    "description": "Перевод организации",
+    "from": "Счет 23177857685058835559",
+    "to": "Счет 56363465303962313778"
   },
   {
     "id": 280743947,
     "state": "EXECUTED",
     "date": "2018-09-27T14:26:24.629306",
     "operationAmount": {
-      "amount": "45653.70",
+      "amount": "50870.71",
       "currency": {
         "name": "руб.",
         "code": "RUB"
       }
     },
-    "description": "Перевод организации",
-    "from": "Счет 23177857685058835559",
-    "to": "Счет 56363465303962313778"
-  }
+    "description": "Перевод с карты на карту",
+    "from": "Maestro 4598300720424501",
+    "to": "Visa Platinum 1246377376343588"
+  },
 ]
 
 
