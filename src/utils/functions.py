@@ -9,40 +9,34 @@ def load_file(filename) -> list:
     :return: Список с данными по операциям
     """
     with open(filename, encoding="utf-8") as file:
-        data = json.load(file)
+        data_list = json.load(file)
 
-    return data
+    return data_list
 
 
-def get_executed_operations(data: list) -> list:
+def get_last_operations(data: list) -> list:
     """
-    Выбирает выполненные операции и добавляет их в список,
-    если в списке оказывается пустой словарь - пропускает его
-    :param data: Список с данными по операциям
-    :return: Список с выполненными операциями
-    """
-    executed_operations = []
-
-    for operation in data:
-        if not operation:
-            continue
-        elif operation["state"] == "EXECUTED":
-            executed_operations.append(operation)
-
-    return executed_operations
-
-
-def sort_operations(executed_operations: list) -> list:
-    """
-    Сортирует операции по дате и возвращает последние пять
-    :param executed_operations: Список с выполненными операциями
+    Удаляет из списка пустые словари, при их наличи
+    Находит в списке последнюю по дате выполненную операцию и добавляет её в новый список
+    :param data: Список с операциями
     :return: Список с последними пятью операциями
     """
-    sorted_operations = sorted(
-        executed_operations,
-        key=lambda x: datetime.strptime(x["date"], '%Y-%m-%dT%H:%M:%S.%f'), reverse=True
-    )
-    return sorted_operations[0:6]
+    while not all(data):
+        data.remove({})
+
+    last_operations = []
+
+    while len(last_operations) < 5:
+        last_operation = max(
+            data,
+            key=lambda x: datetime.strptime(x["date"], '%Y-%m-%dT%H:%M:%S.%f'))
+
+        if last_operation["state"] == "EXECUTED":
+            last_operations.append(data.pop(data.index(last_operation)))
+        else:
+            data.remove(last_operation)
+
+    return last_operations
 
 
 def enter_operations(operation: dict) -> str:
