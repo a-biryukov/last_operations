@@ -174,17 +174,17 @@ last_operations = [
   }
 ]
 
-operations_information_1 = """08.12.2019 Открытие вклада
+operation_information_1 = """08.12.2019 Открытие вклада
 Счет **5907
 41096.24 USD
 """
 
-operations_information_2 = """14.10.2018 Перевод со счета на счет
+operation_information_2 = """14.10.2018 Перевод со счета на счет
 Счет **8655 -> Счет **3493
 77751.04 руб.
 """
 
-operations_information_3 = """27.09.2018 Перевод с карты на карту
+operation_information_3 = """27.09.2018 Перевод с карты на карту
 Maestro 4598 30** **** 4501 -> Visa Platinum 1246 37** **** 3588
 50870.71 руб.
 """
@@ -207,14 +207,14 @@ def last_operations_fixture():
 
 @pytest.fixture
 def info_fixture_1():
-    return operations_information_1
+    return operation_information_1
 
 
 @pytest.fixture
 def info_fixture_2():
-    return operations_information_2
+    return operation_information_2
 
 
 @pytest.fixture
 def info_fixture_3():
-    return operations_information_3
+    return operation_information_3
