@@ -1,6 +1,6 @@
 import os
 
-from utils.functions import load_file, get_last_operations, enter_operations
+from utils.functions import load_file, get_last_operations, get_operations_information
 
 
 def main():
@@ -15,7 +15,7 @@ def main():
 
     # Вывод последних пяти совершённых операций
     for num in range(len(last_operations)):
-        print(enter_operations(last_operations[num]))
+        print(get_operations_information(last_operations[num]))
 
 
 if __name__ == "__main__":

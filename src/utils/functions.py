@@ -40,7 +40,7 @@ def get_last_operations(data: list) -> list:
     return last_operations
 
 
-def enter_operations(operation: dict) -> str:
+def get_operations_information(operation: dict) -> str:
     """
     Выбирает нужную информацию об операции из словаря с данными и подготавливает её к выводу
     :param operation: Словарь с информацией об операции
@@ -70,7 +70,9 @@ def enter_operations(operation: dict) -> str:
 
     from_to = " -> ".join(from_to)
 
-    return f"""{date_formatted}{operation_name}
+    operations_information = f"""{date_formatted}{operation_name}
 {from_to}
 {amount} {currency}
 """
+
+    return operations_information
