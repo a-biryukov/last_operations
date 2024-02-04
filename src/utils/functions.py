@@ -1,29 +1,36 @@
 from datetime import datetime, date
 import json
+import os
 
 
 def load_file(filename: str) -> list:
     """
+    Получает путь к файлу с данными
     Загружает список с данными из файла
+    Удаляет из списка пустые словари, при их наличии
     :param filename: Название файла с данными и путь к нему
     :return: Список с данными по операциям
     """
-    with open(filename, encoding="utf-8") as file:
+    current_file_path = os.path.abspath(__file__)
+    parent_dir_path = os.path.dirname(os.path.dirname(os.path.dirname(current_file_path)))
+    file_path = os.path.join(parent_dir_path, "data", filename)
+
+    with open(file_path, encoding="utf-8") as file:
         data_list = json.load(file)
+
+    while not all(data_list):
+        data_list.remove({})
 
     return data_list
 
 
 def get_last_operations(data: list) -> list:
     """
-    Удаляет из списка пустые словари, при их наличии
     Находит в списке последнюю по дате операцию, если она была отменена, то удаляет её из списка,
     если операция была выполнена, то удаляет её из списка и добавляет в новый список
     :param data: Список с операциями
     :return: Список с последними пятью операциями
     """
-    while not all(data):
-        data.remove({})
 
     last_operations = []
 

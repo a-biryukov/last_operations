@@ -1,11 +1,9 @@
-import os
-
 from utils.functions import load_file, get_last_operations, get_operation_information
 
 
 def main():
-    # Название файла с данными и путь к нему
-    filename = os.path.join("..", "data", "operations.json")
+    # Название файла с данными
+    filename = "operations.json"
 
     # Получение из файла списка с данными об операциях
     data_list = load_file(filename)
