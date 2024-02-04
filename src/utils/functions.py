@@ -37,7 +37,7 @@ def get_last_operations(data: list) -> list:
     while len(last_operations) < 5 and len(data) > 0:
         last_operation = max(data, key=lambda x: x["date"])
 
-        if last_operation["state"] == "EXECUTED":
+        if last_operation.get("state") == "EXECUTED":
             last_operations.append(data.pop(data.index(last_operation)))
         else:
             data.remove(last_operation)
