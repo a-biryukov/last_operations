@@ -1,7 +1,6 @@
 import pytest
-import os
 
-filename = os.path.join("data", "operations.json")
+filename = "operations.json"
 
 data_list = [
   {
@@ -49,7 +48,6 @@ data_list = [
     "from": "Visa Classic 4062745111784804",
     "to": "Maestro 8602249654751155"
   },
-  {},
   {
         "id": 863064926,
         "state": "EXECUTED",
