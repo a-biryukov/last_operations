@@ -1,4 +1,4 @@
-from datetime import datetime, date
+from datetime import date
 import json
 import os
 
@@ -35,9 +35,7 @@ def get_last_operations(data: list) -> list:
     last_operations = []
 
     while len(last_operations) < 5 and len(data) > 0:
-        last_operation = max(
-            data,
-            key=lambda x: datetime.strptime(x["date"], '%Y-%m-%dT%H:%M:%S.%f'))
+        last_operation = max(data, key=lambda x: x["date"])
 
         if last_operation["state"] == "EXECUTED":
             last_operations.append(data.pop(data.index(last_operation)))
@@ -53,14 +51,14 @@ def get_operation_information(operation: dict) -> str:
     :param operation: Словарь с информацией об операции
     :return: Строка с нужной информацией об операции
     """
-    the_date = date.fromisoformat(operation["date"].split("T")[0])
+    the_date = date.fromisoformat(operation.get("date").split("T")[0])
     date_formatted = the_date.strftime("%d.%m.%Y ")
 
-    operation_name = operation["description"]
+    operation_name = operation.get("description")
 
-    amount = operation["operationAmount"]["amount"]
+    amount = operation.get("operationAmount").get("amount")
 
-    currency = operation["operationAmount"]["currency"]["name"]
+    currency = operation.get("operationAmount").get("currency").get("name")
 
     from_to = []
 
@@ -70,7 +68,7 @@ def get_operation_information(operation: dict) -> str:
         lst = ["to"]
 
     for i in lst:
-        if len(operation[i].split()[-1]) == 16:
+        if len(operation.get(i).split()[-1]) == 16:
             from_to.append(f"{operation[i][:-12]} {operation[i][-12:-10]}** **** {operation[i][-4:]}")
         else:
             from_to.append(f"{operation[i][0:4]} **{operation[i][-4:]}")
